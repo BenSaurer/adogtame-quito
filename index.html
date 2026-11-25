@@ -47,10 +47,9 @@
     </div>
   </header>
 
-  <!-- Contenido principal -->
   <main id="main">
 
-    <!-- ==================== SECCIÓN 1: HERO ==================== -->
+    
     <section id="inicio" aria-labelledby="hero-heading">
       <div class="container">
         <div class="hero">
@@ -99,7 +98,7 @@
               <rect x="158" y="268" width="11" height="22" rx="5.5" fill="#b85a10"/>
               <rect x="132" y="268" width="11" height="22" rx="5.5" fill="#b85a10"/>
               <path d="M223 228 Q248 208 243 188" fill="none" stroke="#c85a17" stroke-width="4" stroke-linecap="round"/>
-              <!-- Gato -->
+            
               <ellipse cx="255" cy="240" rx="42" ry="32" fill="#e8e0d8"/>
               <circle cx="250" cy="182" r="26" fill="#f5efe8"/>
               <path d="M232 162 L228 140 L248 158" fill="#e8e0d8" stroke="#c8c0b8" stroke-width="1"/>
@@ -124,7 +123,7 @@
           </div>
         </div>
 
-        <!-- Franja de confianza -->
+       
         <div class="franja-confianza" aria-label="Datos de confianza">
           <div class="franja-item">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
@@ -132,6 +131,82 @@
           </div>
           <div class="franja-item">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                      <button type="button" class="filtro-btn" data-filtro="todos" aria-pressed="true">Todos</button>
+          <button type="button" class="filtro-btn" data-filtro="perros" aria-pressed="false">Perros</button>
+          <button type="button" class="filtro-btn" data-filtro="gatos" aria-pressed="false">Gatos</button>
+          <button type="button" class="filtro-btn" data-filtro="pequeños" aria-pressed="false">Pequeños</button>
+        </div>
+
+        <div id="contador-resultados" aria-live="polite" class="sr-only"></div>
+        <div id="pets-grid" class="pets-grid" style="margin-top:24px;" role="list"></div>
+      </div>
+    </section>
+
+    <section id="requisitos" aria-labelledby="requisitos-heading">
+      <div class="container">
+        <h2 id="requisitos-heading" class="seccion-titulo">Tres pasos, cero vueltas</h2>
+        <p class="seccion-desc">Puedes empezar todo en línea. La visita al refugio es el último paso, no el primero.</p>
+        <div class="pasos">
+          <article class="paso card">
+            <div class="paso-numero" aria-hidden="true">01</div>
+            <h3>Elige a tu peludito</h3>
+            <p>Revisa el catálogo y filtra por tamaño, edad y carácter para encontrar a tu compañero ideal.</p>
+          </article>
+          <article class="paso card">
+            <div class="paso-numero" aria-hidden="true">02</div>
+            <h3>Llena 3 campos</h3>
+            <p>Nombre, correo o WhatsApp y un mensaje breve. Menos de 2 minutos, sin papeleo.</p>
+          </article>
+          <article class="paso card">
+            <div class="paso-numero" aria-hidden="true">03</div>
+            <h3>Recibe tu confirmación</h3>
+            <p>Ves el folio en pantalla más los horarios de atención virtual para la videollamada.</p>
+          </article>
+        </div>
+        <div class="nota-destacada">
+          Requisitos: Ser mayor de 18 años, cédula, comprobante de domicilio y compromiso de cuidado responsable. No necesitas ir al refugio para empezar.
+        </div>
+      </div>
+    </section>
+
+    <section id="solicitud" aria-labelledby="solicitud-heading">
+      <div class="container">
+        <h2 id="solicitud-heading" class="seccion-titulo">Solicitud rápida</h2>
+        <div class="card" style="padding:0; overflow:hidden;">
+          <div class="form-grid">
+            <div class="form-context" style="padding:28px;">
+              <h3>Solicitud rápida — 3 campos, 2 minutos</h3>
+              <p>Recibirás la confirmación aquí mismo, en esta pantalla. Sin esperas, sin papeleo.</p>
+              <div id="chip-mascota-container"></div>
+            </div>
+            <div style="padding:28px;">
+              <form id="form-solicitud" novalidate>
+                <div id="alerta-formulario" class="alerta-error" role="alert" hidden></div>
+                <div class="form-group">
+                  <label for="campo-nombre">Nombre completo</label>
+                  <input type="text" id="campo-nombre" name="nombre" required placeholder="Ej. Rogelio Díaz">
+                  <span id="error-nombre" class="error-msg" role="alert" hidden></span>
+                </div>
+                <div class="form-group">
+                  <label for="campo-contacto">Correo o WhatsApp</label>
+                  <input type="text" id="campo-contacto" name="contacto" required placeholder="Ej. 0987654321">
+                  <span id="error-contacto" class="error-msg" role="alert" hidden></span>
+                </div>
+                <div class="form-group">
+                  <label for="campo-mensaje">Mascota o mensaje breve</label>
+                  <textarea id="campo-mensaje" name="mensaje" required placeholder="¿Qué peludito te interesa?"></textarea>
+                  <span class="helper">Peludito elegido: <strong id="nombre-mascota-helper">ninguna mascota</strong></span>
+                  <span id="error-mensaje" class="error-msg" role="alert" hidden></span>
+                </div>
+                <button type="submit" class="btn btn-primario" style="width:100%;">Enviar solicitud</button>
+              </form>
+              <div id="panel-confirmacion" class="confirmacion" hidden aria-live="assertive" tabindex="-1"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
             <span>Sin filas ni papeleo presencial</span>
           </div>
           <div class="franja-item">
@@ -142,7 +217,7 @@
       </div>
     </section>
 
-    <!-- ==================== SECCIÓN 2: PELUDITOS ==================== -->
+   
     <section id="mascotas" aria-labelledby="pets-heading">
       <div class="container">
         <h2 id="pets-heading" class="seccion-titulo">Peluditos en adopción</h2>
@@ -150,3 +225,113 @@
 
         <!-- Filtros -->
         <div class="filtro-grupo" role="group" aria-label="Filtrar por tipo y tamaño">
+              <section id="contacto" aria-labelledby="contacto-heading">
+      <div class="container">
+        <h2 id="contacto-heading" class="seccion-titulo">Contacto y horarios virtuales</h2>
+        <div class="contacto-grid">
+          <div class="datos-contacto">
+            <p><strong>Dirección:</strong> Av. 12 de Octubre y Vicente Ramón Roca, Quito, Ecuador</p>
+            <p><strong>Teléfono:</strong> <a href="tel:023946500">02 3946500</a></p>
+            <p><strong>Correo:</strong> adopciones@adogtame.ec</p>
+            <p><strong>Modalidad:</strong> Atención virtual por videollamada y WhatsApp</p>
+          </div>
+          <div>
+            <table class="tabla-horarios">
+              <thead>
+                <tr><th>Canal</th><th>Días</th><th>Horario</th><th>Cita previa</th></tr>
+              </thead>
+              <tbody>
+                <tr class="fila-virtual"><td>Atención virtual <span class="etiqueta-recomendado">Recomendado</span></td><td>Lunes a viernes</td><td>09:00 – 18:00</td><td>No requiere</td></tr>
+                <tr class="fila-virtual"><td>Atención virtual</td><td>Sábado</td><td>09:00 – 13:00</td><td>No requiere</td></tr>
+                <tr><td>Presencial en refugio</td><td>Lunes a viernes</td><td>10:00 – 16:00</td><td>Sí, en videollamada</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand">aDOGtame Quito — Refugio Sandañaz</div>
+          <p class="footer-sub">Adopción responsable y virtual desde Quito, Ecuador.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#inicio">Inicio</a>
+          <a href="#mascotas">Peluditos</a>
+          <a href="#requisitos">Requisitos</a>
+          <a href="#solicitud">Solicitud</a>
+          <a href="#contacto">Contacto</a>
+        </div>
+        <div class="footer-bottom">© 2026 aDOGtame Quito · Prototipo web.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const MASCOTAS = [
+      { id: 'canela', nombre: 'Canela', tipo: 'perros', tamano: 'pequeños', etiquetas: ['Perra', '2 años', 'Pequeña', 'Tranquila'], desc: 'Muy cariñosa y tranquila. Ideal para departamento.', color: '#d4723a' },
+      { id: 'milo', nombre: 'Milo', tipo: 'gatos', tamano: 'pequeños', etiquetas: ['Gato', '1 año', 'Pequeño', 'Juguetón'], desc: 'Curioso, limpio y ronroneador.', color: '#64748b' },
+      { id: 'bruno', nombre: 'Bruno', tipo: 'perros', tamano: 'mediano', etiquetas: ['Perro', '3 años', 'Mediano', 'Sociable'], desc: 'Noble y obediente. Se lleva excelente con niños.', color: '#8b5a2b' },
+      { id: 'luna', nombre: 'Luna', tipo: 'gatos', tamano: 'pequeños', etiquetas: ['Gata', '8 meses', 'Pequeña', 'Dulce'], desc: 'Busca compañía constante y caricias.', color: '#334155' }
+    ];
+    let mascotaSeleccionada = null, filtroActual = 'todos';
+    const grid = document.getElementById('pets-grid');
+    const toast = document.getElementById('toast');
+
+    function mostrarToast(t) { toast.textContent = t; toast.classList.add('visible'); setTimeout(() => toast.classList.remove('visible'), 3000); }
+    function avatarSVG(m) {
+      return m.tipo === 'gatos'
+        ? `<svg viewBox="0 0 100 100" width="96" height="96"><rect width="100" height="100" fill="#fdeee0"/><polygon points="25,45 30,18 48,36" fill="${m.color}"/><polygon points="75,45 70,18 52,36" fill="${m.color}"/><circle cx="50" cy="56" r="28" fill="${m.color}"/><circle cx="40" cy="52" r="4" fill="#fff"/><circle cx="60" cy="52" r="4" fill="#fff"/></svg>`
+        : `<svg viewBox="0 0 100 100" width="96" height="96"><rect width="100" height="100" fill="#fdeee0"/><ellipse cx="26" cy="48" rx="10" ry="20" fill="#5c3a21"/><ellipse cx="74" cy="48" rx="10" ry="20" fill="#5c3a21"/><circle cx="50" cy="54" r="28" fill="${m.color}"/><circle cx="40" cy="50" r="4" fill="#1a1714"/><circle cx="60" cy="50" r="4" fill="#1a1714"/></svg>`;
+    }
+    function renderizarMascotas() {
+      const lista = MASCOTAS.filter(m => filtroActual === 'todos' ? true : (filtroActual === 'pequeños' ? m.tamano === 'pequeños' : m.tipo === filtroActual));
+      grid.innerHTML = lista.map(m => {
+        const sel = mascotaSeleccionada && mascotaSeleccionada.id === m.id;
+        return `<article class="card pet-card ${sel ? 'seleccionada' : ''}"><div class="pet-avatar">${avatarSVG(m)}</div><h3 class="pet-nombre">${m.nombre}</h3><div class="pet-info">${m.etiquetas.map(e => `<span class="chip">${e}</span>`).join('')}</div><p class="pet-desc">${m.desc}</p><button type="button" class="btn ${sel ? 'btn-primario' : 'btn-secundario'} btn-sm" onclick="seleccionarMascota('${m.id}')">${sel ? '✓ Elegido' : 'Elegir a ' + m.nombre}</button></article>`;
+      }).join('');
+    }
+    window.seleccionarMascota = id => {
+      mascotaSeleccionada = MASCOTAS.find(m => m.id === id) || null;
+      renderizarMascotas();
+      document.getElementById('nombre-mascota-helper').textContent = mascotaSeleccionada ? mascotaSeleccionada.nombre : 'ninguna mascota';
+      if (mascotaSeleccionada) {
+        document.getElementById('campo-mensaje').value = `Hola, me interesa adoptar a ${mascotaSeleccionada.nombre}.`;
+        mostrarToast(`Elegiste a ${mascotaSeleccionada.nombre}`);
+        document.getElementById('solicitud').scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+    document.querySelectorAll('.filtro-btn').forEach(b => b.addEventListener('click', () => {
+      document.querySelectorAll('.filtro-btn').forEach(x => x.setAttribute('aria-pressed', 'false'));
+      b.setAttribute('aria-pressed', 'true'); filtroActual = b.dataset.filtro; renderizarMascotas();
+    }));
+    let grande = false;
+    document.getElementById('btn-large-text').addEventListener('click', e => {
+      grande = !grande; document.documentElement.style.setProperty('--font-scale', grande ? '1.18' : '1');
+      e.currentTarget.setAttribute('aria-pressed', String(grande));
+    });
+    document.getElementById('btn-high-contrast').addEventListener('click', e => {
+      const act = document.body.classList.toggle('high-contrast'); e.currentTarget.setAttribute('aria-pressed', String(act));
+    });
+    document.getElementById('form-solicitud').addEventListener('submit', e => {
+      e.preventDefault();
+      const n = document.getElementById('campo-nombre').value.trim();
+      const c = document.getElementById('campo-contacto').value.trim();
+      const m = document.getElementById('campo-mensaje').value.trim();
+      const alerta = document.getElementById('alerta-formulario');
+      if (n.length < 3 || c.length < 6 || m.length < 5) { alerta.textContent = 'Completa todos los campos correctamente.'; alerta.hidden = false; return; }
+      alerta.hidden = true; e.target.hidden = true;
+      const panel = document.getElementById('panel-confirmacion');
+      panel.hidden = false;
+      panel.innerHTML = `<h3>¡Solicitud recibida!</h3><p>Folio: <span class="folio">UIO-${Math.floor(100000 + Math.random()*900000)}</span></p><p><strong>Solicitante:</strong> ${n}<br><strong>Contacto:</strong> ${c}<br><strong>Peludito:</strong> ${mascotaSeleccionada ? mascotaSeleccionada.nombre : 'Por definir'}</p><button type="button" class="btn btn-secundario btn-sm" onclick="location.reload()">Nueva solicitud</button>`;
+    });
+    renderizarMascotas();
+  </script>
+</body>
+</html>
